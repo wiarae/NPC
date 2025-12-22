@@ -1,0 +1,21 @@
+name: npc
+channels:
+  - pytorch
+  - nvidia
+  - defaults
+dependencies:
+  - python=3.11
+  - pytorch
+  - pytorch-cuda=12.1
+  - torchvision
+  - torchaudio
+  - pip
+  - pip:
+      - diffusers>=0.32
+      - transformers<4.45.1
+      - accelerate
+      - safetensors
+      - sentencepiece
+      - openai
+      - pillow
+      - numpy
