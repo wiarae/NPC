@@ -1,5 +1,5 @@
 # NPC
-![NPC framework overview](npc.png)
+![NPC framework overview](npc.jpg)
 NPC is a framework for **iterative negative prompt generation and correction**
 using large language models and image verification.
 
