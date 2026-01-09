@@ -18,6 +18,13 @@ Given a text prompt and a generated image, NPC:
 
 ## Requirements
 
+Install the required Python environment using Conda:
+
+```bash
+conda env create -f environment.yml
+conda activate npc
+```
+
 ### Prompt
 A **PROMPT** describing the target image is required.
 This prompt is used for:
