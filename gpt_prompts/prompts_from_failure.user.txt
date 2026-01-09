@@ -1,0 +1,21 @@
+You will propose up to $k negative prompt tokens grounded EXCLUSIVELY in the FAILURE REASON TEXT.
+
+POSITIVE PROMPT:
+$positive_prompt
+
+FAILURE REASON (verbatim):
+$reason
+
+TASK (follow strictly)
+1) Parse the FAILURE REASON. Extract ONLY the undesired properties explicitly mentioned there (style, composition/layout, artifacts/branding/text, quality/focus, lighting/color).
+2) Map those properties to tokens using the CLOSED VOCABULARY from the system message; you may also use an exact phrase from the reason if it meets the constraints.
+3) Remove any token that conflicts with or duplicates required objects/attributes/colors/counts/relations in the POSITIVE PROMPT (including synonyms).
+4) Deduplicate. If you have fewer than $k tokens after filtering, TOP UP using the FALLBACK list from the system message (in order), skipping duplicates or contradictions, until you reach $k or the list is exhausted.
+
+CONSTRAINTS
+- Use ONLY what is supported by the FAILURE REASON TEXT for the evidence-backed part; do NOT invent properties not present.
+- tokens: lowercase, 1–6 words, no "no/without/not", no quotes, no trailing punctuation, no duplicates.
+- Never return an empty list; if no evidence-backed tokens remain, fill entirely from the FALLBACK list.
+
+Return JSON only:
+{"candidates": ["token 1", "token 2", "..."]}

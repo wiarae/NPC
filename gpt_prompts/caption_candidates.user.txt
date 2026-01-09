@@ -1,0 +1,26 @@
+POSITIVE PROMPT:
+$positive_prompt
+
+CAPTION:
+$caption
+
+GENERAL_FALLBACKS (use only if needed to reach K):
+$fallbacks
+
+K (max total candidates): $k
+
+Task
+1) From the CAPTION, find elements that are NOT requested by the POSITIVE PROMPT (consider synonyms, inflections, paraphrases).
+2) Prioritize contradictions to the POSITIVE PROMPT (object identity, attributes like color/material/count/shape, relations/pose), 
+   and if contradictions are weak or absent, pick items at least tightly related to the POSITIVE PROMPT's objects (foreground-first).
+3) Produce a flat list "candidates" of up to K concise negative phrases.
+4) If you have fewer than K items, supplement with the most relevant items from GENERAL_FALLBACKS while still obeying all constraints and avoiding anything implied by the POSITIVE PROMPT.
+5) Return exactly K items if possible (use fallbacks to fill). Only return fewer than K if no valid item remains.
+
+Constraints
+- Use ONLY elements explicitly present in the CAPTION.
+- Exclude anything present in (or synonymous with) the POSITIVE PROMPT.
+- Phrases: lowercase, 1–6 words, no "no/without/not", no quotes, no trailing punctuation, no duplicates.
+
+Return exactly:
+{"candidates": ["...", "...", "..."]} 

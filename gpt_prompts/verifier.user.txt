@@ -1,0 +1,9 @@
+INSTRUCTION:
+$instruction
+
+CHECKLIST (optional):
+$checklist
+
+Judge the attached image against the INSTRUCTION (and CHECKLIST if present).
+Return exactly:
+{"correct": 1 or 0, "score": float in [0,1], "reason": "brief explanation"}
