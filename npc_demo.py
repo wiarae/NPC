@@ -679,7 +679,10 @@ def main(args):
         torch_dtype=torch.bfloat16
     ).to("cuda")
 
-    PROMPT = """A photorealistic scene of a modern, minimalist living room. There are three red spherical lamps hanging directly above a large, gray L-shaped sofa made of velvet. On the coffee table in front of the sofa, place two bright yellow ceramic mugs and a single, opened blue book with a gold spine."""
+    PROMPT = args.prompt
+
+    if not PROMPT.strip():
+        raise ValueError("--prompt must be a non-empty string")
 
     # === Templates ===
     cap_sys = read_txt(os.path.join(args.prompt_dir, args.caption_system_file))
@@ -861,9 +864,14 @@ if __name__ == "__main__":
     parser.add_argument("--snr_repo", default="black-forest-labs/FLUX.1-dev", type=str)
     parser.add_argument("--snr_device", choices=["cpu","cuda"], default="cpu")
     parser.add_argument("--snr_dtype", choices=["float32","float16","bfloat16"], default="float32")
-    parser.add_argument("--dataset", type=str, default="Geneval++", choices=["Geneval++","Imagine"])
     parser.add_argument("--precheck_original", action="store_true", default=True)
     parser.add_argument("--use_eval_json_skip", action="store_true", default=False)
+    parser.add_argument(
+        "--prompt",
+        type=str,
+        required=True,
+        help="Text prompt describing the target image"
+    )
 
     args = parser.parse_args()
     main(args)
