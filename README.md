@@ -35,3 +35,13 @@ Set your API key as an environment variable:
 
 ```bash
 export OPENAI_API_KEY="your_api_key"
+```
+
+### Basic Run
+
+```bash
+python npc_demo.py \
+  --prompt "A photorealistic scene of a modern, minimalist living room with three red spherical lamps above a gray sofa." \
+  --seed 0 \
+  --save-dir npc_demo
+```
