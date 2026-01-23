@@ -52,3 +52,16 @@ python npc_demo.py \
   --seed 0 \
   --save-dir npc_demo
 ```
+
+### Attention Analysis
+To analyze how negative prompts improve prompt-image alignment—as discussed in Section 3 of the paper—this script logs the distribution of attention mass between target tokens (salient) and the background throughout the denoising process.
+```python snr_simple_trace_ratio_fig.py \
+  --prompt "A photo of two teddy bears on the left and three laptops on the right." \
+  --terms "three,laptops" \
+  --negatives "" "one laptop" "wooden table" \
+  --steps 50 \
+  --guidance 3.5 \
+  --true-cfg 1.8 \
+  --seed 0 \
+  --out-dir salient_vs_bg_results
+```
